@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch Card & Interactive Games</title>
+<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="jb.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+    overflow-x:hidden;
+}
+
+/* Hero Section */
+.hero{
+    height:50vh;
+    background:linear-gradient(135deg,#003366,#00509d);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle,rgba(255,255,255,0.1),transparent);
+    animation:rotate 15s linear infinite;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeInDown 1.5s ease;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:1.2rem;
+}
+
+/* Content Section */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.content-card{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+    animation:slideUp 1.2s ease;
+    transition:.4s;
+}
+
+.content-card:hover{
+    transform:translateY(-10px);
+}
+
+.section{
+    margin-bottom:50px;
+}
+
+.section h2{
+    color:#003366;
+    margin-bottom:20px;
+    position:relative;
+    display:inline-block;
+}
+
+.section h2::after{
+    content:'';
+    width:50%;
+    height:3px;
+    background:#ff9800;
+    position:absolute;
+    bottom:-8px;
+    left:0;
+}
+
+.section p{
+    line-height:1.9;
+    font-size:1.1rem;
+}
+
+/* Features */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.feature-box{
+    background:#f8fafc;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    transition:.4s;
+    border-top:4px solid #00509d;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+
+.feature-box h3{
+    color:#003366;
+    margin-bottom:15px;
+}
+
+/* Button */
+.btn-area{
+    text-align:center;
+    margin-top:50px;
+}
+
+.download-btn{
+    display:inline-block;
+    background:#00509d;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 40px;
+    border-radius:50px;
+    font-size:18px;
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.download-btn:hover{
+    background:#ff9800;
+    transform:scale(1.05);
+}
+
+.download-btn::before{
+    content:'';
+    position:absolute;
+    width:30px;
+    height:100%;
+    background:rgba(255,255,255,.4);
+    top:0;
+    left:-50px;
+    transform:skewX(-20deg);
+    animation:shine 3s infinite;
+}
+
+/* Footer */
+footer{
+    background:#003366;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+/* Animations */
+@keyframes fadeInDown{
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes shine{
+    0%{
+        left:-60px;
+    }
+    100%{
+        left:120%;
+    }
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .content-card{
+        padding:25px;
+    }
+}
+
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">
+    <a href="jb.html">
+        <img src="../agency/assets/img/logo2.png" alt="LSLGA Logo">
+    </a>
+</div>
+
+    <ul class="nav-links">
+
+        <li><a href="jb.html">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">About ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="bsgmlb.html">BSGMLB</a></li>
+                <li><a href="quality-policy.html">Quality policy statement.</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                 <li> <a href="online-sports-betting.html">online-sports-betting</a></li>
+            </ul>
+        </li>
+
+        <!-- <li class="dropdown">
+            <a href="#">Operations ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Licensing Regulation</a></li>
+                <li><a href="#">Monitoring & Inspection</a></li>
+                <li><a href="#">Standards Setting</a></li>
+                <li><a href="#">Enforcement</a></li>
+                <li><a href="#">Revenue Collection</a></li>
+            </ul>
+        </li> -->
+
+        <li class="dropdown">
+            <a href="#">Licenses ▾</a>
+            <ul class="dropdown-menu">
+                <li class="sub-dropdown">
+                    <a href="#">Gaming Categories ▸</a>
+
+                    <ul class="sub-menu">
+                        <li><a href="online-sports-betting.html">Sports Betting</a></li>
+                        <li><a href="casino.html">Casino</a></li>
+                        <li><a href="gaming-machines.html">Gaming Machines</a></li>
+                        <li><a href="pool-betting.html">Pools Betting</a></li>
+                        <li><a href="scratch-card.html">Scratch Cards</a></li>
+                    </ul>
+                </li>
+                <li><a href="licenced.html">Licensed Operators</a></li>
+                <li><a href="unlicenced.html">Illegal Operators</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Media ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">News</a></li>
+                <li><a href="#">Public Notice</a></li>
+                <li><a href="#">Photos</a></li>
+                <li><a href="#">Videos</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Support ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">Complaints</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+    <div class="menu-btn">
+        ☰
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Scratch Card & Interactive Games</h1>
+        <p>Licensed Gaming Activities and Regulatory Information</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="content-card">
+
+        <div class="section">
+            <h2>Scratch Cards</h2>
+
+            <p>
+                A Scratch Card is an instant-win form of lottery game.
+                Scratch cards are made from specially printed cardboard
+                containing sealed prize areas. Players scratch off the
+                concealed surface to reveal symbols, pictures, numbers,
+                or words that determine whether they have won a prize.
+            </p>
+
+            <br>
+
+            <p>
+                With advancements in technology, scratch card games are
+                now available online and through mobile devices, making
+                participation easier and more accessible to players.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Interactive Games</h2>
+
+            <p>
+                Interactive games involve active participation between one
+                or more players. The rules, gameplay structure, and operating
+                procedures are determined by the license holder and are
+                subject to approval by the relevant gaming regulatory authority.
+            </p>
+
+            <br>
+
+            <p>
+                These games may include digital competitions, skill-based
+                contests, online engagements, and other approved gaming
+                activities designed to provide entertainment and excitement
+                for participants.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>License Validity</h2>
+
+            <p>
+                Scratch Card and Interactive Gaming licenses are valid
+                for a period of one (1) year and may be renewed before
+                or upon expiration in accordance with regulatory requirements.
+            </p>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+
+            <div class="feature-box">
+                <h3>Online Access</h3>
+                <p>Play approved games through web and mobile platforms.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>Licensed Operations</h3>
+                <p>All activities operate under approved gaming regulations.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>Annual Renewal</h3>
+                <p>Licenses remain active for one year and are renewable.</p>
+            </div>
+
+        </div>
+
+        <div class="btn-area">
+            <a href="#" class="download-btn">
+                Download Requirement Document
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="modern-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+
+            <!-- Logo Section -->
+            <div class="footer-col">
+                <a href="jb.html" class="footer-logo">
+                    <img src="../agency/assets/img/logo2.png" alt="BSSMGLB Logo" id="footerLogo">
+                </a>
+                <p class="footer-text">
+                    Benue State Sports Marketing, Gaming, and Lotteries Board.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Follow Us</h4>
+
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <!-- Logo/Image Below Social Icons -->
+                <div class="social-logo-container">
+                    <img src="../agency/assets/img/game-responsibly (1).png" alt="Partner Logo" id="socialLogo">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 BSSMGLB. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<div class="whatsapp-chat-btn" onclick="toggleWhatsApp()">💬</div>
+
+<div class="whatsapp-popup" id="whatsappBox">
+    <div class="whatsapp-popup-header">
+        <img src="../agency/assets/img/wassap.jpg" alt="">
+        <h4>Chat With Us</h4>
+    </div>
+    <p>Hi! Click below to chat with our support on WhatsApp.</p>
+    <a href="https://chat.whatsapp.com/GWvnDc4RUycLBTNPNgdfhd" target="_blank">Start Chat</a>
+</div>
+<script src="online-sports-betting.js"></script>
+<script>
+function toggleWhatsApp() {
+    const box = document.getElementById('whatsappBox');
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+
+<script src="partners.js"></script>
+<script>
+
+// Smooth animation on scroll
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+});
+
+document.querySelectorAll('.feature-box').forEach(box => {
+    box.style.opacity = 0;
+    box.style.transform = 'translateY(50px)';
+    box.style.transition = '1s';
+    observer.observe(box);
+});
+
+// Download Button Demo
+document.querySelector('.download-btn')
+.addEventListener('click', function(e){
+    e.preventDefault();
+
+    alert(
+        'Requirement document download will start here.'
+    );
+});
+
+</script>
+
+</body>
+</html>

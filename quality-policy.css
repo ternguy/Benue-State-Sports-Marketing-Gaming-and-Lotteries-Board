@@ -1,0 +1,895 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f2f2f2;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+.policy-header{
+background:#003893;
+padding:40px 20px;
+text-align:center;
+position:relative;
+}
+
+.header-content h1{
+color:#fff;
+font-size:32px;
+font-weight:500;
+line-height:1.4;
+animation:fadeDown 1s ease;
+}
+
+.header-content span{
+font-size:24px;
+font-weight:300;
+}
+
+.gold-line{
+width:45%;
+height:3px;
+background:#f1c40f;
+margin:20px auto 0;
+animation:growLine 1.5s ease;
+}
+
+/* SECTION */
+
+.policy-section{
+padding:40px 20px 80px;
+display:flex;
+justify-content:center;
+}
+
+.policy-card{
+width:100%;
+max-width:700px;
+background:#fff;
+padding:50px;
+border:2px solid #666;
+box-shadow:0 8px 25px rgba(0,0,0,.15);
+transition:.5s;
+}
+
+.policy-card:hover{
+transform:translateY(-8px);
+}
+
+.policy-card h2{
+margin-bottom:25px;
+color:#222;
+font-size:28px;
+}
+
+.policy-card p{
+font-size:15px;
+line-height:1.9;
+margin-bottom:25px;
+color:#444;
+}
+
+/* Signature */
+
+.signature-section{
+margin-top:40px;
+}
+
+.signature{
+font-family:cursive;
+font-size:42px;
+color:#2c3e50;
+margin:15px 0;
+transform:rotate(-8deg);
+}
+
+.signature-line{
+width:180px;
+height:1px;
+background:#000;
+margin-bottom:15px;
+}
+
+.signature-section h4{
+font-weight:500;
+}
+
+/* BUTTONS */
+
+.policy-buttons{
+margin-top:40px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.download-btn,
+.print-btn{
+padding:14px 25px;
+border-radius:40px;
+text-decoration:none;
+transition:.4s;
+font-weight:500;
+}
+
+.download-btn{
+background:#1ebe5c;
+color:#fff;
+}
+
+.download-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 20px rgba(0,56,147,.3);
+}
+
+.print-btn{
+border:2px solid #1ebe5c;
+color:#003893;
+}
+
+.print-btn:hover{
+background:#1ebe5c;
+color:#fff;
+}
+
+/* ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+transition:1s ease;
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes growLine{
+from{
+width:0;
+}
+to{
+width:45%;
+}
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.policy-card{
+padding:30px;
+}
+
+.header-content h1{
+font-size:24px;
+}
+
+.header-content span{
+font-size:18px;
+}
+
+.policy-buttons{
+flex-direction:column;
+}
+
+.download-btn,
+.print-btn{
+text-align:center;
+}
+}
+/* Footer Logo */
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 120px;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.footer-logo img:hover {
+    transform: scale(1.08);
+}
+
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-5px);
+    background: #ffb400;
+    color: #000;
+}
+
+/* Logo below social icons */
+.social-logo-container {
+    margin-top: 15px;
+}
+
+.social-logo-container img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.social-logo-container img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255,180,0,0.7));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-logo img {
+        width: 90px;
+    }
+
+    .social-logo-container img {
+        width: 80px;
+    }
+}
+.logo-spin {
+    animation: spinLogo 1s ease;
+}
+
+.logo-pulse {
+    animation: pulseLogo 1s infinite;
+}
+
+@keyframes spinLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseLogo {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.whatsapp-chat-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366; /* WhatsApp Green */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 9999;
+    animation: popUp 0.4s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-chat-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Popup Chat Box */
+.whatsapp-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 260px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    z-index: 9999;
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.whatsapp-popup-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-popup-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.whatsapp-popup-header h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.whatsapp-popup p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.whatsapp-popup a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    background: #25d366;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.whatsapp-popup a:hover {
+    background: #1ebe5c;
+}
+
+/* demo */
+/* Footer Logo */
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 120px;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.footer-logo img:hover {
+    transform: scale(1.08);
+}
+
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-5px);
+    background: #ffb400;
+    color: #000;
+}
+
+/* Logo below social icons */
+.social-logo-container {
+    margin-top: 15px;
+}
+
+.social-logo-container img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.social-logo-container img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255,180,0,0.7));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-logo img {
+        width: 90px;
+    }
+
+    .social-logo-container img {
+        width: 80px;
+    }
+}
+.logo-spin {
+    animation: spinLogo 1s ease;
+}
+
+.logo-pulse {
+    animation: pulseLogo 1s infinite;
+}
+
+@keyframes spinLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseLogo {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* * Footer Full Width Background */ 
+.modern-footer {
+    margin:0px;
+    width: 100%;
+    color: #eaeaea;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    background: #111; /* ensure visible full width */
+}
+
+/* Center the content but keep footer background full width */
+.footer-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Grid Layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+/* Titles and text */
+.footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.footer-title a {
+    color: #f7eb06;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.footer-text {
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+/* Section Headings */
+.footer-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #bdbdbd;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Social icons */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #1a1a1a;
+    color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.social-icon:hover {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid #1f1f1f;
+    padding-top: 15px;
+}
+
+.footer-bottom p {
+    color: #bdbdbd;
+    margin: 0;
+}
+.navbar{
+    background-color: #008751;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo a{
+    color:white;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links li a{
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    display:block;
+}
+
+.nav-links li:hover{
+    background:#008751;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#131181;
+    min-width:250px;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu li a{
+    color:#333;
+    padding:12px 15px;
+}
+
+.dropdown-menu li:hover{
+    /* background:#240ec4; */
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+.menu-btn{
+    display:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+@media(max-width:991px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:-100%;
+        flex-direction:column;
+        width:100%;
+        background:#008751;
+        transition:.3s;
+    }
+
+    .nav-links.active{
+        left:0;
+    }
+
+    .dropdown-menu{
+        position:static;
+        display:none;
+        background:#008751;
+        box-shadow:none;
+    }
+
+    .dropdown.open .dropdown-menu{
+        display:block;
+    }
+
+    .dropdown-menu li a{
+        color:white;
+    }
+}
+
+/* Third Level Dropdown */
+.sub-dropdown{
+    position:relative;
+}
+
+.sub-menu{
+    position:absolute;
+    top:0;
+    left:100%;
+    min-width:250px;
+    background:#008751;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    z-index:1001;
+}
+
+.sub-menu li{
+    width:100%;
+}
+
+.sub-menu li a{
+    color:#333;
+    padding:12px 15px;
+    display:block;
+    text-decoration:none;
+}
+
+.sub-menu li:hover{
+    background:#008751;
+}
+
+.sub-dropdown:hover .sub-menu{
+    display:block;
+}
+
+/* Mobile */
+@media(max-width:991px){
+
+    .sub-menu{
+        position:static;
+        display:none;
+        background:#0055aa;
+        box-shadow:none;
+    }
+
+    .sub-dropdown.open .sub-menu{
+        display:block;
+    }
+    .sub-menu li a{
+        color:white;
+        padding-left:40px;
+    }
+    .sub-menu li a:hover{
+        background:#003366;
+    }
+}
+
+.logo img{
+    height:60px;
+    width:auto;
+    display:block;
+}
+.logo img{
+    height:100px;
+    width:auto;
+    transition:0.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.05);
+}
+/* Mobile Navigation Hover Effect */
+@media (max-width: 991px) {
+
+    .navbar-nav .nav-link:hover{
+        background-color: #28a745; /* Your preferred color */
+        color: #fff !important;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+}
+@media (max-width: 991px) {
+
+    .navbar-nav li:hover{
+        background-color: #28a745;
+        transition: 0.3s ease;
+    }
+
+    .navbar-nav li:hover a{
+        color: #fff !important;
+    }
+
+}
+@media (max-width: 991px) {
+
+    .navbar-nav .nav-item{
+        margin-bottom: 3px;
+    }
+
+    .navbar-nav .nav-link{
+        padding: 12px 20px;
+        display: block;
+        transition: all .3s ease;
+    }
+
+    .navbar-nav .nav-link:hover{
+        background: #28a745;
+        color: #fff !important;
+    }
+
+}
+dropdown-menu,
+.sub-menu {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.dropdown-menu li,
+.sub-menu li {
+    list-style: none;
+}
+.dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    background:white;
+    min-width:250px;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.sub-menu{
+    position:absolute;
+    top:0;
+    left:100%;
+    min-width:250px;
+    background:#fff;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    z-index:1001;
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.dropdown:hover > .dropdown-menu{
+    display:block;
+}
+.dropdown-menu{
+    display:none;
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+/* Signature Section */
+.signature-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.signature-image-container {
+    margin: 15px auto;
+    width: 250px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signature-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.signature-image:hover {
+    transform: scale(1.05);
+}
+
+.signature-line {
+    width: 250px;
+    height: 2px;
+    background: #000;
+    margin: 10px auto 15px;
+}
+
+.signature-section h4 {
+    margin: 5px 0;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.position-title {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+#smaller{
+    font-size: 11px;
+}

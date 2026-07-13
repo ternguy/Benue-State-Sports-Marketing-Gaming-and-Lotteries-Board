@@ -1,0 +1,369 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f7fa;
+}
+
+/* HERO */
+
+.hero{
+height:55vh;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1400&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-content{
+animation:fadeDown 1.2s;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+max-width:700px;
+margin:auto;
+}
+
+/* SEARCH */
+
+.search-section{
+background:white;
+padding:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.search-section input{
+padding:15px;
+width:350px;
+border:none;
+border-radius:40px;
+background:#eee;
+outline:none;
+}
+
+.search-section button{
+padding:15px 30px;
+background:#0c8f3f;
+color:white;
+border:none;
+border-radius:40px;
+cursor:pointer;
+transition:.4s;
+}
+
+.search-section button:hover{
+background:#06662b;
+transform:translateY(-3px);
+}
+
+/* CATEGORY */
+
+.categories{
+padding:50px;
+text-align:center;
+}
+
+.categories h2{
+margin-bottom:30px;
+color:#222;
+}
+
+.category-buttons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.category-buttons button{
+padding:12px 25px;
+border:none;
+background:#0c8f3f;
+color:white;
+border-radius:30px;
+cursor:pointer;
+transition:.4s;
+}
+
+.category-buttons button:hover{
+background:#222;
+transform:scale(1.08);
+}
+
+/* FEATURE */
+
+.feature{
+padding:70px 10%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.feature img{
+width:100%;
+border-radius:15px;
+transition:.5s;
+}
+
+.feature img:hover{
+transform:scale(1.05);
+}
+
+.feature-text h4{
+color:#0c8f3f;
+margin-bottom:10px;
+}
+
+.feature-text h2{
+margin-bottom:20px;
+font-size:35px;
+}
+
+.feature-text p{
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.feature-text a{
+text-decoration:none;
+padding:12px 30px;
+background:#0c8f3f;
+color:white;
+border-radius:30px;
+transition:.4s;
+}
+
+.feature-text a:hover{
+background:#222;
+}
+
+/* NEWS GRID */
+
+.news-section{
+padding:60px 8%;
+}
+
+.news-title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.news-card{
+
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.5s;
+
+}
+
+.news-card:hover{
+
+transform:translateY(-12px);
+
+}
+
+.news-card img{
+
+width:100%;
+height:220px;
+object-fit:cover;
+transition:.5s;
+
+}
+
+.news-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.news-content{
+
+padding:25px;
+
+}
+
+.news-content span{
+
+color:#0c8f3f;
+font-size:14px;
+
+}
+
+.news-content h3{
+
+margin:15px 0;
+
+}
+
+.news-content p{
+
+color:#666;
+line-height:1.7;
+
+}
+
+.news-content a{
+
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+background:#0c8f3f;
+padding:10px 25px;
+border-radius:30px;
+color:white;
+transition:.4s;
+
+}
+
+.news-content a:hover{
+
+background:#222;
+
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+
+background:#0c8f3f;
+color:white;
+padding:70px 20px;
+text-align:center;
+
+}
+
+.newsletter h2{
+
+margin-bottom:20px;
+
+}
+
+.newsletter input{
+
+padding:15px;
+width:320px;
+border:none;
+border-radius:40px;
+outline:none;
+
+}
+
+.newsletter button{
+
+padding:15px 30px;
+border:none;
+border-radius:40px;
+background:#222;
+color:white;
+cursor:pointer;
+margin-left:10px;
+transition:.4s;
+
+}
+
+.newsletter button:hover{
+
+background:white;
+color:#222;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:#111;
+color:white;
+padding:30px;
+text-align:center;
+
+}
+
+/* ANIMATION */
+
+.reveal{
+
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+/* KEYFRAMES */
+
+@keyframes fadeDown{
+
+from{
+opacity:0;
+transform:translateY(-60px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:35px;
+}
+
+.feature{
+grid-template-columns:1fr;
+}
+
+.newsletter input{
+
+width:100%;
+margin-bottom:15px;
+
+}
+
+.newsletter button{
+
+margin:0;
+
+}
+}

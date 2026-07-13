@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complaint Portal</title>
+<link rel="stylesheet" href="casino.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f5f7fa,#e4ecf7);
+    overflow-x:hidden;
+}
+
+/* Hero Section */
+.hero{
+    height:50vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1920') center/cover;
+    color:#fff;
+}
+
+.hero h1{
+    font-size:3rem;
+    animation:slideDown 1s ease;
+}
+
+.hero p{
+    margin-top:15px;
+    max-width:700px;
+    animation:fadeIn 2s ease;
+}
+
+/* Form Section */
+.complaint-section{
+    padding:80px 10%;
+}
+
+.form-container{
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.1);
+    transform:translateY(50px);
+    opacity:0;
+    transition:1s;
+}
+
+.form-container.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.form-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.form-title h2{
+    color:#003366;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    transition:.4s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#0a7cff;
+    box-shadow:0 0 15px rgba(10,124,255,.2);
+    outline:none;
+}
+
+textarea{
+    resize:none;
+    min-height:140px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#008751;
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+button:hover{
+    transform:translateY(-4px);
+    background:#1ebe5d;
+}
+
+/* Info Cards */
+.info-section{
+    padding:80px 10%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transform:translateY(60px);
+    opacity:0;
+    transition:1s;
+}
+
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:65px;
+    height:65px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:32px;
+    text-decoration:none;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    animation:pulse 2s infinite;
+}
+
+/* Animations */
+@keyframes slideDown{
+    from{
+        transform:translateY(-60px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,.7);
+    }
+    70%{
+        box-shadow:0 0 0 20px rgba(37,211,102,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+    }
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#003366;
+    color:#fff;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
+    }
+}
+/* Success Popup */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
+    opacity:0;
+    transition:.5s;
+    z-index:9999;
+}
+
+.popup-overlay.show{
+    visibility:visible;
+    opacity:1;
+}
+
+.popup-box{
+    background:#fff;
+    width:90%;
+    max-width:450px;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    transform:scale(.7);
+    transition:.4s;
+}
+
+.popup-overlay.show .popup-box{
+    transform:scale(1);
+}
+
+.checkmark{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    animation:bounce 1s infinite alternate;
+}
+
+@keyframes bounce{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-10px);
+    }
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">
+    <a href="jb.html">
+        <img src="/assets/img/logo2.png" alt="LSLGA Logo">
+    </a>
+</div>
+
+    <ul class="nav-links">
+
+        <li><a href="jb.html">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">About ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="bsgmlb.html">BSGMLB</a></li>
+                <li><a href="quality-policy.html">Quality policy statement.</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </li>
+
+       
+
+        <li class="dropdown">
+            <a href="#">Licenses ▾</a>
+            <ul class="dropdown-menu">
+                <li class="sub-dropdown">
+                    <a href="#">Gaming Categories ▸</a>
+
+                    <ul class="sub-menu">
+                        <li><a href="#">Sports Betting</a></li>
+                        <li><a href="#">Casino</a></li>
+                        <li><a href="#">Gaming Machines</a></li>
+                        <li><a href="#">Pools Betting</a></li>
+                        <li><a href="#">Scratch Cards</a></li>
+                         <li> <a href="#">online-sports-betting</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Licensed Operators</a></li>
+                <li><a href="#">Illegal Operators</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Media ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">News</a></li>
+                <li><a href="#">Public Notice</a></li>
+                <li><a href="#">Photos</a></li>
+                <li><a href="#">Videos</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Support ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="faq.html">FAQS</a></li>
+                <li><a href="complaints.html">Complaints</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+    <div class="menu-btn">
+        ☰
+    </div>
+</nav>
+<!-- HERO -->
+<section class="hero">
+    <h1>Complaint Portal</h1>
+    <p>
+        Submit your complaint, feedback, or report. Our team will review
+        and respond promptly.
+    </p>
+</section>
+
+<!-- FORM -->
+<section class="complaint-section">
+    <div class="form-container reveal">
+
+        <div class="form-title">
+            <h2>Submit a Complaint</h2>
+        </div>
+
+        <form id="complaintForm">
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label>Complaint Category</label>
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option>Service Complaint</option>
+                    <option>Staff Misconduct</option>
+                    <option>Fraud Report</option>
+                    <option>Technical Issue</option>
+                    <option>Others</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Complaint Details</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Upload Evidence (Screenshot, Document, Photo)</label>
+                <input type="file" id="evidence" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                <small id="fileName" style="display:block;margin-top:8px;color:#666;">
+                    No file selected
+                </small>
+            </div>
+            <button type="submit">
+                Send Complaint via WhatsApp
+            </button>
+
+        </form>
+    </div>
+</section>
+<!-- Success Popup -->
+<div id="successPopup" class="popup-overlay">
+    <div class="popup-box">
+        <div class="checkmark">✓</div>
+        <h2>Complaint Ready!</h2>
+        <p>
+            Your complaint has been prepared successfully.
+            You will be redirected to WhatsApp shortly.
+        </p>
+    </div>
+</div>
+<!-- INFO -->
+<section class="info-section">
+    <div class="cards">
+
+        <div class="card reveal">
+            <h3>Fast Response</h3>
+            <p>Complaints are delivered instantly through WhatsApp.</p>
+        </div>
+
+        <div class="card reveal">
+            <h3>Secure Submission</h3>
+            <p>Your information remains confidential.</p>
+        </div>
+
+        <div class="card reveal">
+            <h3>24/7 Availability</h3>
+            <p>Submit complaints anytime and from anywhere.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="#" class="whatsapp-btn">
+💬
+</a>
+
+<!-- FOOTER -->
+<footer class="modern-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+
+            <!-- Logo Section -->
+            <div class="footer-col">
+                <a href="jb.html" class="footer-logo">
+                    <img src="/assets/img/logo2.png" alt="BSSMGLB Logo" id="footerLogo">
+                </a>
+                <p class="footer-text">
+                    Benue State Sports Marketing, Gaming, and Lotteries Board.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Follow Us</h4>
+
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <!-- Logo/Image Below Social Icons -->
+                <div class="social-logo-container">
+                    <img src="/assets/img/game-responsibly (1).png" alt="Partner Logo" id="socialLogo">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 BSSMGLB. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+
+document.getElementById("complaintForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let category = document.getElementById("category").value;
+    let message = document.getElementById("message").value;
+
+    let evidence =
+        document.getElementById("evidence").files.length
+        ? document.getElementById("evidence").files[0].name
+        : "No file attached";
+
+    let whatsappNumber = "2348012345678";
+    let complaintEmail = "complaints@yourdomain.com";
+
+    let complaintText =
+`NEW COMPLAINT SUBMISSION
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Category: ${category}
+Evidence: ${evidence}
+
+Complaint:
+${message}`;
+
+    /* Show Popup */
+    document.getElementById("successPopup")
+    .classList.add("show");
+
+    setTimeout(() => {
+
+        /* WhatsApp */
+        window.open(
+            `https://wa.me/${+2348057503673}?text=${encodeURIComponent(complaintText)}`,
+            "_blank"
+        );
+
+        /* Email */
+        window.location.href =
+        `mailto:${'ternguy1995@gmail.com'}?subject=${encodeURIComponent('New Complaint Submission')}&body=${encodeURIComponent(complaintText)}`;
+
+    }, 2500);
+
+});
+/* Scroll Reveal Animation */
+
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+
+    reveals.forEach(item => {
+
+        const top = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if(top < windowHeight - 100){
+            item.classList.add('show');
+        }
+
+    });
+
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+document.getElementById('evidence')
+.addEventListener('change', function(){
+
+    const fileName = this.files.length
+        ? this.files[0].name
+        : "No file selected";
+
+    document.getElementById('fileName')
+    .textContent = fileName;
+
+});
+</script>
+
+</body>
+</html>
